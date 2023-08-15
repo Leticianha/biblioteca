@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de livros</title>
+    <script src="https://kit.fontawesome.com/a4e1ef735b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="biblioteca.css">
+</head>
+
+<body>
+    <div class="cadastro">
+        <h1>CADASTRE JÁ</h1>
+    </div>
+    
+    <div class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ut veritatis enim, laboriosam ducimus aspernatur animi consequuntur dicta nam eaque? Quis quam eaque facere fugit nisi autem, possimus repudiandae sed.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste illum beatae dolor saepe sint, vitae incidunt, cupiditate ducimus voluptatibus placeat aperiam. Molestias amet alias quam minus aliquid officiis ipsam quod! Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde similique veritatis soluta. Obcaecati, sed ea eveniet perferendis harum qui, deleniti culpa quas nam fugit, odit perspiciatis ex aspernatur ut porro.lorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut cum optio sit praesentium fuga? Nihil temporibus amet, nesciunt eaque totam corporis earum architecto at magni placeat minus voluptas rem ipsam.
+    </div>
+
+    <div class="formulario">
+        <input id="nomeLivro" placeholder="Nome" type="text">
+        <input id="autorLivro" placeholder="Autor" type="text">
+        <input id="anoLivro" placeholder="Ano" type="number">
+        <button onclick="adicionar()">Adicionar</button>
+        <button onclick="mostrarLivros()">Mostrar</button>
+        <button onclick="apagarLivros()">Deletar</button>
+        <p id="quantidadeLivros"></p>
+        <p id="textoCadastro"></p>
+        <div class="carrossel">
+            
+            <div class="botoes">
+                <button class="bot" id="anterior"><i class="fa-solid fa-circle-arrow-left"></i></button>
+                <img class="img" id="carrosselImagem" src="" alt="Imagem do Carrossel">
+                <button class="bot" id="proximo"><i class="fa-solid fa-circle-arrow-left fa-rotate-180"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let biblioteca = [];
+        const IMAGENS = ['livro1.png', 'livro2.png', 'livro3.png', 'livro4.png'];
+        let imagensAtivas = [];
+
+        function cadastro(nome, autor, ano) {
+            var livro = {
+                titulo: nome,
+                autor: autor,
+                ano: ano
+            };
+            biblioteca.push(livro);
+            atualizarQuantidadeLivros();
+
+            if (biblioteca.length <= IMAGENS.length) {
+                imagensAtivas.push(IMAGENS[biblioteca.length - 1]);
+                imgIndice = biblioteca.length - 1;
+                carregar();
+            }
+            document.querySelector('.carrossel').style.display = 'block';
+        }
+
+        function adicionar() {
+            let nome = document.getElementById('nomeLivro').value;
+            let autor = document.getElementById('autorLivro').value;
+            let ano = document.getElementById('anoLivro').value;
+            cadastro(nome, autor, ano);
+        }
+
+        function mostrarLivros() {
+            for (let x of biblioteca) {
+                console.log(x.titulo, x.autor, x.ano);
+            }
+        }
+
+        function apagarLivros() {
+            biblioteca.length = 0;
+            imagensAtivas.length = 0;
+            atualizarQuantidadeLivros();
+            document.querySelector('.carrossel').style.display = 'none';
+        }
+
+        function atualizarQuantidadeLivros() {
+            const quantidadeLivros = biblioteca.length;
+            const quantidadeLivrosText = quantidadeLivros === 1 ? '1 livro cadastrado' : `${quantidadeLivros} livros cadastrados`;
+            document.getElementById('quantidadeLivros').textContent = quantidadeLivrosText;
+
+            const textoCadastro = quantidadeLivros === 0 ? 'Cadastre um livro' : '';
+            document.getElementById('textoCadastro').textContent = textoCadastro;
+        }
+
+        let imgIndice = 0;
+        var IMG = document.getElementById('carrosselImagem');
+        function carregar(index = imgIndice) {
+            IMG.src = imagensAtivas[index];
+            imgIndice = index;
+        }
+        const prevButton = document.getElementById('anterior');
+        const nextButton = document.getElementById('proximo');
+
+        prevButton.addEventListener('click', () => {
+            if (imgIndice === 0) {
+                imgIndice = imagensAtivas.length - 1;
+            } else {
+                --imgIndice;
+            }
+            carregar();
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (imgIndice === imagensAtivas.length - 1) {
+                imgIndice = 0;
+            } else {
+                ++imgIndice;
+            }
+            carregar();
+        });
+    </script>
+</body>
+
+</html>

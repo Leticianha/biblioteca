@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background-color: rgb(246 234 218);
+}
+
+.cadastro {
+    background-color: rgb(243 185 113);
+    text-align: center;
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.lorem {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-left: 7%;
+    padding-right: 7%;
+    text-align: justify;
+    padding-top: 4%;
+    padding-bottom: 3.5%;
+    color: #404040;
+}
+
+input {
+    margin: 0 6px;
+    height: 31px;
+    padding-left: 5px;
+    border-radius: 6px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button {
+    margin: 0 6px;
+    height: 31px;
+    padding: 0 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #f3b971;
+    color: white;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #a7620c82;
+}
+
+#quantidadeLivros {
+    padding: 2% 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #404040  ;
+}
+
+#carrosselImagem {
+    border-radius: 24px;
+    box-shadow: 3px 3px 3px #808080ab;
+}
+
+.carrossel {
+    display: none;
+}
+
+.formulario {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.img {
+    width: auto;
+    height: 350px;
+    border-radius: 80px;
+}
+
+#anterior {
+    background-color: rgb(246 234 218);
+    font-size: 30px;
+    color: #f3b971;
+    position: absolute;
+    bottom: 162px;
+    left: 584px;
+}
+
+#proximo {
+    background-color: rgb(246 234 218);
+    font-size: 30px;
+    color: #f3b971;
+    position: absolute;
+    bottom: 162px;
+}
+
